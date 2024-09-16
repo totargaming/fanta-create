@@ -15,9 +15,9 @@ const Sidebar = () => {
                 <Link href='/' className='sidebar-logo'>
                     <Image src="/assets/images/logo-text.svg" alt="logo" width={180} height={28} />
                 </Link>
-                <nav className='sidebar-nav flex flex-col flex-grow'>
+                <nav className='sidebar-nav'>
                     <SignedIn>
-                        <ul className='sidebar-nav_elements flex flex-col flex-grow'>
+                        <ul className='sidebar-nav_elements'>
                             {navLinks.map((link) => {
                                 const isActive = link.route === pathname
 
@@ -32,7 +32,7 @@ const Sidebar = () => {
                                     </li>
                                 )
                             })}
-                            <li className='flex-center cursor-pointer gap-2 p-4 mt-auto'>
+                            <li className='flex-center cursor-pointer gap-2 p-4'>
                                 <UserButton showName />
                             </li>
                         </ul>
