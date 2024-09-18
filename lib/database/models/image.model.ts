@@ -14,7 +14,12 @@ export interface IImage extends Document {
     aspectRatio?: string;
     color?: string;
     prompt?: string;
-    author?: Schema.Types.ObjectId;
+    author: {
+        _id: string;
+        firstName: string;
+        lastName: string;
+    }
+
     createdAt?: Date;
     updatedAt?: Date;
 }
