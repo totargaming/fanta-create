@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider signInFallbackRedirectUrl={"/"} signUpFallbackRedirectUrl={"/"} afterSignOutUrl={"/"} appearance={{
+    <ClerkProvider afterSignOutUrl={"/"} appearance={{
       variables: { colorPrimary: '#624cf5' }
     }}>
       <html lang="en">
