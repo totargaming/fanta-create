@@ -18,7 +18,7 @@ if (!cached) {
 export const connectToDatabase = async () => {
     if (cached.conn) return cached.conn;
     if (!MONGODB_URL) throw new Error('Missing MONGODB_URL is not defined');
-    cached.promise = cached.promise || mongoose.connect(MONGODB_URL, { dbName: 'FantaCreate', bufferCommands: false });
+    cached.promise = cached.promise || mongoose.connect(MONGODB_URL, { dbName: 'fantacreate', bufferCommands: false });
 
     cached.conn = await cached.promise;
     return cached.conn;
