@@ -141,7 +141,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance }
                         )}
                     </div>
                 )}
-                <Button type="submit" >Submit</Button>
+                <Button type="submit" className='submit-button capitalize' >Submit</Button>
             </form>
         </Form >
     )
