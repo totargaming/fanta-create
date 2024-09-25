@@ -206,6 +206,13 @@ const TransformationForm = ({
             )}
           </div>
         )}
+        <div className="media-uploader-field">
+          <CustomField
+            control={form.control}
+            name="publicId"
+            className="flex size-full flex-col"
+          />
+        </div>
         <div className="flex flex-col gap-4">
           <Button
             type="submit"
