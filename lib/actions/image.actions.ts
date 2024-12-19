@@ -6,7 +6,9 @@ import { handleError } from "../utils";
 import { Update } from "next/dist/build/swc";
 import User from "../database/models/user.model";
 import Image from "../database/models/image.model";
+import { redirect } from "next/navigation";
 
+const populateUser = (query: any) => query.populate({path: 'author', model: User, select: '_id firstName lastName'});
 export async function addImage({image,userId,path}: AddImageParams) {
     try {
         await connectToDatabase();
@@ -26,8 +28,13 @@ export async function addImage({image,userId,path}: AddImageParams) {
 export async function UpdateImage({image,userId,path}: UpdateImageParams) {
     try {
         await connectToDatabase();
+        const imageToUpdate = await Image.findById(image._id);
+        if (!imageToUpdate || imageToUpdate.author.toHexString() !== userId) {
+            throw new Error("Unauthorized or image not found");
+        }
+        const updateImage = await Image.findByIdAndUpdate(imageToUpdate._id, image, {new: true});
         revalidatePath(path);
-        return JSON.parse(JSON.stringify(image));
+        return JSON.parse(JSON.stringify(updateImage));
     } catch (error) {
         handleError(error);
     }
@@ -35,16 +42,20 @@ export async function UpdateImage({image,userId,path}: UpdateImageParams) {
 export async function deleteImage(imageId : string) {
     try {
         await connectToDatabase();
-        revalidatePath(path);
-        return JSON.parse(JSON.stringify(image));
+        await Image.findByIdAndDelete(imageId);
     } catch (error) {
         handleError(error);
+    } finally {
+        redirect("/"); // Redirect to the home page
     }
 }
 export async function getImageById(imageId : string) {
     try {
         await connectToDatabase();
-        revalidatePath(path);
+        const image = await populateUser(Image.findById(imageId));
+        if (!image) {
+            throw new Error("Image not found");
+        }
         return JSON.parse(JSON.stringify(image));
     } catch (error) {
         handleError(error);
