@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import { CldImage, CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 import { dataUrl, getImageSize } from "@/lib/utils";
@@ -28,7 +28,7 @@ const MediaUploader = ({
       publicId: result?.info?.public_id,
       width: result?.info?.width,
       height: result?.info?.height,
-      secureUrl: result?.info?.secure_url,
+      secureURL: result?.info?.secure_url,
     }));
     onValueChange(result?.info?.public_id);
     toast({

@@ -25,7 +25,7 @@ export async function addImage({image,userId,path}: AddImageParams) {
     }
 }
 //Update
-export async function UpdateImage({image,userId,path}: UpdateImageParams) {
+export async function updateImage({image,userId,path}: UpdateImageParams) {
     try {
         await connectToDatabase();
         const imageToUpdate = await Image.findById(image._id);
