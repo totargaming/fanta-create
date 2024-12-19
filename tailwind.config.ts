@@ -23,13 +23,13 @@ module.exports = {
 				ring: "hsl(var(--ring))",
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
-				purple: {
-					100: "#F4F7FE",
-					200: "#BCB6FF",
-					400: "#868CFF",
-					500: "#7857FF",
-					600: "#4318FF",
-				},
+				zinc: {
+					100: "#f4f4f5",
+					200: "#e4e4e7",
+					400: "#a1a1aa",
+					500: "#71717a",
+					600: "#52525b",
+				  },
 				dark: {
 					400: "#7986AC",
 					500: "#606C80",
@@ -69,7 +69,7 @@ module.exports = {
 				IBMPlex: ["var(--font-ibm-plex)"],
 			},
 			backgroundImage: {
-				"purple-gradient": "url('/assets/images/gradient-bg.svg')",
+				"zinc-gradient": "url('/assets/images/gradient-bg.svg')",
 				banner: "url('/assets/images/banner-bg.png')",
 			},
 			borderRadius: {
