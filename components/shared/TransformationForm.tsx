@@ -164,7 +164,7 @@ const TransformationForm = ({
           [fieldName === "prompt" ? "prompt" : "to"]: value,
         },
       }));
-    }, 1000);
+    }, 1000)();
     return onChangeField(value);
   };
   // TODO: Implement the onTransformHandler function
