@@ -37,7 +37,7 @@ export async function checkoutCredits(transaction: CheckoutTransactionParams) {
 export async function createTransaction(transaction: CreateTransactionParams) {
   try {
     await connectToDatabase();
-    const newTransaction = new Transaction({
+    const newTransaction = await Transaction.create({
       ...transaction,
       buyer: transaction.buyerId,
     });
